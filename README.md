@@ -50,7 +50,7 @@ https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
 ## 5.) Optional - Download BEAVRS repo
 For this project, I used the BEAVRS reactor, a IRPhE 2023 benchmark draft. 
 Information and source code can be found at: 
-'''
+```
 https://github.com/mit-crpg/BEAVRS
-'''
+```
 Downloading this code is not nessisary to run the project as-is using the statepoint HDF5 file I provided. However, if wanting to experement with any other configuration of the reactor, the source code will be nessisary. 
