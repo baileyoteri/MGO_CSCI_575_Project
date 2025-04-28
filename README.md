@@ -1,5 +1,6 @@
 # MGO_DQN_CSCI_575_Project
 Code and instructions for Bailey Oteri's CSCI 575 final project - Multigroup Optimization using DQN RL.
+Instructions for running code will be in the folder of the script. 
 # Initialization Steps
 ## 1. ) Create Conda enviorment
 I highly reccomend using a conda enviorment to dowload everything so it is easy to delete afterwards.
@@ -46,3 +47,10 @@ Comments are added throughout the code to breifly explain what is happening, for
 ```
 https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
 ```
+## 5.) Optional - Download BEAVRS repo
+For this project, I used the BEAVRS reactor, a IRPhE 2023 benchmark draft. 
+Information and source code can be found at: 
+'''
+https://github.com/mit-crpg/BEAVRS
+'''
+Downloading this code is not nessisary to run the project as-is using the statepoint HDF5 file I provided. However, if wanting to experement with any other configuration of the reactor, the source code will be nessisary. 
