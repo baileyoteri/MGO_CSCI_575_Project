@@ -18,15 +18,7 @@ conda config --add channels conda-forge
 conda install mamba
 mamba install openmc
 ```
-
-## 3.) ENDF Data for OpenMC 
-In order to use OpenMC, you need the appropriate microscopic cross section libraries. To download the correct one, please go to : 
-'''
-https://openmc.org/official-data-libraries/
-'''
-Scroll down to ENDF/B-VII.1 and download the .tar.xz file listed. Once downloaded and unzipped, you will need the path to the the "cross_sections.xml" file for running OpenMC. 
-
-## 4.) Download Pytorch
+## 3.) Download Pytorch
 The RL library I used was Pytorch, and my code was specifically written to use CUDA (NVIDA GPUs), however should also work on a CPU if CUDA is not avalible. 
 If using an NVIDIA GPU, enter this command in your terminal: 
 ```
@@ -47,6 +39,13 @@ Comments are added throughout the code to breifly explain what is happening, for
 ```
 https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
 ```
+## 4.) Optional - Download ENDF cross section library
+In order to use OpenMC in continuous energy mode, you need the appropriate microscopic cross section libraries. To run this project as is, this is not required, it is only required if trying to run the code to build the BEAVRS assembly (or any other OpenMC run).
+To download the correct one, please go to : 
+'''
+https://openmc.org/official-data-libraries/
+'''
+Scroll down to ENDF/B-VII.1 and download the .tar.xz file listed. Once downloaded and unzipped, you will need the path to the the "cross_sections.xml" file for running OpenMC. 
 ## 5.) Optional - Download BEAVRS repo
 For this project, I used the BEAVRS reactor, a IRPhE 2023 benchmark draft. 
 Information and source code can be found at: 
