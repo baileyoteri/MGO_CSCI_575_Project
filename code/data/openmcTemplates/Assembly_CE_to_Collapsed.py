@@ -3,6 +3,7 @@
 """
 Bailey Oteri 
 04/25/25
+# Code to create CE and 2000 group OpenMC data 
 
 REFERENCES: 1.) BEAVRS code: https://github.com/mit-crpg/BEAVRS/tree/master/models/openmc
             2.) BEAVRS extract pincell example: https://github.com/mit-crpg/BEAVRS/blob/master/models/openmc/extract-pin.ipynb
@@ -23,20 +24,19 @@ matplotlib.use('TkAgg')  # Use a GUI backend
 import matplotlib.pyplot as plt
 plt.ion()
 
-sys.path.append("/home/bailey/codes/BEAVRS/models/openmc")
+from openmcTemplates import geometryBuilder, mgxsBuilder,setTallies
+
+sys.path.append("PATH_TO_BEAVRS_CODE")
 import beavrs.builder
 import beavrs.constants as c
 
-sys.path.append("/home/bailey/codes/multigroup-optimization/templates/")
-from openmcTemplates import geometryBuilder, mgxsBuilder,setTallies
-
 # Set the path to the cross-sections data
-library_path = "/media/bailey/DATA/nuclear/data/CrossSectionData/ENDF/endfb71/endfb-vii.1-hdf5/cross_sections.xml"
+library_path = "PATH_TO_ENDF_DATA /cross_sections.xml"
 os.environ["OPENMC_CROSS_SECTIONS"] = library_path
 
 
 # For creating output folder
-output_directory = "/media/bailey/DATA/nuclear/data/GroupStructure/nuclear-classification/openmc/Pytorch/DQN_Project/Assembly/CE_to_Collapsed/"
+output_directory = os.getcwd()
 output_path_base = "output"
 
 # ============================================================================
@@ -159,7 +159,7 @@ materials.export_to_xml(output_path+'/materials.xml')
 # Run OpenMC
 # ============================================================================
 
-openmc.run(cwd=output_path,threads=30)
+openmc.run(cwd=output_path)
 
 # ============================================================================
 # Saving Exports From CE Run
