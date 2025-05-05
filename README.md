@@ -18,27 +18,12 @@ conda config --add channels conda-forge
 conda install mamba
 mamba install openmc
 ```
-## 3.) Download Pytorch
-The RL library I used was Pytorch, and my code was specifically written to use CUDA (NVIDA GPUs), however should also work on a CPU if CUDA is not avalible. 
-If using an NVIDIA GPU, enter this command in your terminal: 
+## 3.) Download Stable Baselines3
+For this project, I used Stable Baselines3's library. To download it and its dependancies in your conda enviorment, enter this command: 
 ```
-nvidia-smi
+pip install stable-baselines3[extra]
 ```
-If you have the correct drivers installed for your GPU, the output should look something like this: 
-![nvidia-smi](https://github.com/user-attachments/assets/aad410b7-f711-421e-aa7f-59f16298a788)
 
-In the top right corner, you should see "CUDA Version: X". On the website linked above for getting started locally, input your CUDA Version and any other specifications you need to change, and the command you would need to run will be shown in order to download Pytorch. 
-
-![Pytorch_Download_Command](https://github.com/user-attachments/assets/e4860376-13b0-46c4-b24d-42f1136686c5)
-
-If downloading into a fresh conda enviorment, you should not need to worry about Python version or anything as those things will be set automatically.
-### Check Download of Pytorch - Quickstart Tutorial
-To check that Pytorch downloaded correctly and is using NVIDIA CUDA software, open the Quickstart.py folder and run in Python in the Pytorch conda enviorment. 
-If everything downloaded properly, you should not need to make any edits to this code to run it! 
-Comments are added throughout the code to breifly explain what is happening, for more details you can go to the following link for the full tutorial: 
-```
-https://pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html
-```
 ## 4.) Optional - Download ENDF cross section library
 In order to use OpenMC in continuous energy mode, you need the appropriate microscopic cross section libraries. To run this project as is, this is not required, it is only required if trying to run the code to build the BEAVRS assembly (or any other OpenMC run).
 To download the correct one, please go to : 
