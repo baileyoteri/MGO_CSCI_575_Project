@@ -11,9 +11,10 @@ conda create --name MGO
 conda activate MGO
 ```
 
-## 2. ) Once in your conda enviorment, in command line download OpenMC.
+## 2. ) Download OpenMC 
 OpenMC is an open source monte-carlo nuclear photon and neutron transport code.
 For more information about the program itself, please go to: https://openmc.org/
+
 To download in conda enviorment:
 ```
 conda config --add channels conda-forge
