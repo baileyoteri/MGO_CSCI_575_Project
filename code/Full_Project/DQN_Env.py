@@ -1,7 +1,6 @@
 """
 Bailey Oteri 
 04/17/25
-Env version 0002
 """
 import numpy as np
 import os  # to create folder and environment variable
@@ -9,7 +8,7 @@ import sys
 import openmc  # for the python API of OpenMC 
 import openmc.mgxs as mgxs # for multigroup cross section mode
 
-sys.path.append("/home/bailey/codes/multigroup-optimization/templates/")
+sys.path.append("data/")
 from openmcTemplates import  mgxsBuilder,setTallies
 
 class GroupCollapseEnv:
@@ -21,7 +20,7 @@ class GroupCollapseEnv:
         #self.initial_groups_energies =np.logspace(-8,7,num=201)
         self.min_idx = 0
         self.max_idx = len(group_boundaries_2k)-1
-        self.output_path = '/media/bailey/DATA/nuclear/data/GroupStructure/nuclear-classification/openmc/Pytorch/DQN_Project/0004/output1/'
+        self.output_path = os.path.join(os.getcwd(), "/data/")
 
         # Total actions = (n_groups - 1) boundaries × 2 directions × 10 magnitudes
         self.num_boundaries = n_groups - 1
@@ -32,8 +31,8 @@ class GroupCollapseEnv:
         self.settings = openmc.Settings.from_xml(self.output_path + 'settings.xml')
         self.batches = self.settings.batches
         self.materials = openmc.Materials.from_xml(self.output_path + 'materials.xml')
-        self.ce_sp = '/media/bailey/DATA/nuclear/data/GroupStructure/nuclear-classification/openmc/Pytorch/DQN_Project/Assembly/CE_to_Collapsed/output1/statepoint_ce.h5'
-        self.ce_summary ='/media/bailey/DATA/nuclear/data/GroupStructure/nuclear-classification/openmc/Pytorch/DQN_Project/Assembly/CE_to_Collapsed/output1/summary_ce.h5'
+        self.ce_sp = os.path.join(os.getcwd(), 'statepoint_ce.h5')
+        self.ce_summary = os.path.join(os.getcwd(), 'summary_ce.h5')
         self.tallies_file = setTallies.create_tallies(self.materials, group_boundaries_2k)
         # create delta for first run of episode
         self.delta_keff = 1 
@@ -161,7 +160,7 @@ class GroupCollapseEnv:
         materials_mg.export_to_xml(self.output_path)
         tallies_fileMG.export_to_xml(self.output_path)
 
-        openmc.run(cwd=self.output_path, threads = 35)
+        openmc.run(cwd=self.output_path)
 
         # Read in results of run and return them 
         mg_spfile = os.path.join(self.output_path, 'statepoint_mg.h5')
