@@ -6,7 +6,7 @@ Instructions for running code will be in the folder of the script.
 I highly reccomend using a conda enviorment to dowload everything so it is easy to delete afterwards.
 ```
 conda create --name MGO
-conda activate MGO-DQN
+conda activate MGO
 ```
 
 ## 2. ) Once in your conda enviorment, in command line download OpenMC.
