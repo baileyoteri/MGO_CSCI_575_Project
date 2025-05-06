@@ -6,7 +6,7 @@ REFERENCES:
     1.) Pytorch Reinforment Learning DQN tutorial: https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html
 """
 
-import Env
+import DQN_Env
 import math
 import random
 import matplotlib
@@ -25,9 +25,12 @@ import pandas as pd
 from datetime import datetime
 from tqdm import tqdm
 from torch.utils.tensorboard import SummaryWriter
+import os
 
 # Get time of run start to see how long run takes
 start_time = datetime.now().time()
+
+data_path = os.path/join(os.getcwd(), "/data/")
 
 # set up matplotlib
 is_ipython = 'inline' in matplotlib.get_backend()
@@ -42,7 +45,7 @@ device = torch.device(
     "mps" if torch.backends.mps.is_available() else
     "cpu"
 )
-# Bailey Added to make sure GPU was being used - Device diagnostic output
+
 if device.type == 'cuda':
     print("✅ CUDA is available and will be used.")
     print(f"Number of CUDA devices: {torch.cuda.device_count()}")
@@ -56,7 +59,7 @@ else:
 # Read in information about CE run and 200 group runs
 # ===================================================================================================================================
 # Read in information about CE run and 200 group runs
-ce_sp = openmc.StatePoint('/media/bailey/DATA/nuclear/data/GroupStructure/nuclear-classification/openmc/Pytorch/DQN_Project/Assembly/CE_to_Collapsed/output1/statepoint_ce.h5', autolink=False)
+ce_sp = openmc.StatePoint(data_path +'statepoint_ce.h5', autolink=False)
 
 # Get keff for CE and 200 group structure
 ce_keff = ce_sp.keff
