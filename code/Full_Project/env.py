@@ -9,7 +9,7 @@ import os
 import openmc.mgxs as mgxs 
 import sys
 
-sys.path.append("/data/")
+sys.path.append("data/")
 from openmcTemplates import  mgxsBuilder, setTallies
 
 class MGXS_Collapse(gym.Env): 
@@ -59,7 +59,7 @@ class MGXS_Collapse(gym.Env):
         self.materials = openmc.Materials.from_xml(self.output_path + 'materials.xml')
         self.tallies_file = setTallies.create_tallies(self.materials, self.initial_group_struct)
         self.episode = 0
-        self.step = 0
+        self.step_done = 0
     
     
     
@@ -72,14 +72,14 @@ class MGXS_Collapse(gym.Env):
 
         if self.ce_sp is None:  # so only loads it once per env
             self.ce_sp = openmc.StatePoint(self.output_path + 'statepoint_ce.h5', autolink=False)
-            self.ce_summary =openmc.Summary(self.output_path'summary_ce.h5')
+            self.ce_summary =openmc.Summary(self.output_path+'summary_ce.h5')
             self.ce_sp.link_with_summary(self.ce_summary)
 
             self.ce_keff = self.ce_sp.keff.nominal_value
             self.initial_mg_sp = openmc.StatePoint(self.output_path + 'statepoint_mg.h5', autolink=False)
             self.initial_mg_keff = self.initial_mg_sp.keff.nominal_value
         self.episode += 1
-        self.step = 0
+        self.step_done = 0
         self.delta_keff = 1
         # Initialize the agent at the right of the grid
         self.agent_GS = self.indices
@@ -87,7 +87,7 @@ class MGXS_Collapse(gym.Env):
         return np.array([self.agent_GS]).astype(np.float32), {}  # empty info dict
     
     def step(self, action):
-        self.step += 1
+        self.step_done += 1
         direction = action // self.n_boundries
         boundary = action % self.n_boundries
         boundary +=1 # skip first and last boundaries 
