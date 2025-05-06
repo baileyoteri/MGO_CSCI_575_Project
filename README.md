@@ -1,8 +1,10 @@
 # MGO_DQN_CSCI_575_Project
 Code and instructions for Bailey Oteri's CSCI 575 final project - Multigroup Optimization using DQN RL.
-Instructions for running code will be in the folder of the script. 
+
 Tutorial pt 1 is just the following steps, and was too large to add to github because each step takes a few min to download all of the libraries. Tutorial pt 2 starts right after the following steps have been completed, and the github repository has been downloaded as a zip file. 
+
 NOTE: when downloading the github repo, if planning to run full program, please go into the data folder and unzip 'statepoint_ce.h5', it was too large to upload without compressing first.
+
 # Initialization Steps
 ## 1. ) Create Conda enviorment
 I highly reccomend using a conda enviorment to dowload everything so it is easy to delete afterwards.
