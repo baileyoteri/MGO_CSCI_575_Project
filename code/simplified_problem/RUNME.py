@@ -8,6 +8,7 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import SubprocVecEnv
 import time
 import numpy as np
+import os
 from stable_baselines3.common.evaluation import evaluate_policy
 path = os.path.join(os.getcwd(), "model")
 # Define function to create environment instances
